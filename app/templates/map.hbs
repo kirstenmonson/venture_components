@@ -1,13 +1,23 @@
-<h4>You are in "{{ name }}"</h4>
+<br>
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href='home'>Home</a></li>
+  <li role="presentation" class="active"><a href='map'>Map</a></li>
+  <li role="presentation"><a href='character'>Character</a></li>
+</ul>
 
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;You are in "{{ name }}"</h4>
+
+<div style="text-align:center; margin-right:auto; margin-left:auto;">
 Width: {{input value=mapWidth size="3"}}
 Height: {{input value=mapHeight size="3"}}
+</div>
+<br>
 
-<table style="border: 1px solid gray;">
+<table style="border: 1px solid gray; margin:auto;">
   {{#each map.rows as |row|}}
     <tr>
       {{#each row.cells as |cell|}}
-        <td>{{cell.text}}</td>
+        <td style="color: green;">{{cell.text}}</td>
       {{/each}}
     </tr>
   {{/each}}

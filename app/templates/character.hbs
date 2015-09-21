@@ -1,66 +1,137 @@
+<script type="text/javascript">
+jQuery(document).ready(function() {
+jQuery(".expanded_content").hide();
+jQuery(".test_preview_container").click(function()
+{
+jQuery(this).next(".expanded_content").slideToggle(500);
+});
+});
+</script>
+
+<br>
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href='home'>Home</a></li>
+  <li role="presentation"><a href='map'>Map</a></li>
+  <li role="presentation" class="active"><a href='character'>Character</a></li>
+</ul>
+
+<div class="container" style="display:flex;">
+<div class="fixed" style="width:300px;">
 <h4>Name: {{ character.name }}<br>
 Class: {{ character.charClass}}</h4>
+<br>
 <h5>Max Health: {{ character.maxHealth }}<br>
-Max Mana: {{ character.maxMana }}</h5>
-<div>
-  Constitution:
+Max Mana: {{ character.maxMana }}</h5><br><br>
+<button class="btn btn-default" {{action 'increaseStat' 'level' }}>Level Up!</button>
 </div>
-<div>
-  <button {{action 'decreaseStat' 'constitution'}}>less</button>
+<div class="flex-item" style="flex-grow:1;">
+<img src={{character.charPic}} class="img-responsive" alt="Responsive image" width="25%">
+</div>
+{{#if character.hampered }}
+<div class="flex-item" style="flex-grow:2;">
+<img src="http://www.waywardtees.com/images/cpgal/01/trdim.jpg" class="img-responsive" alt="Responsive image" width="75%">
+</div>
+{{/if}}
+</div>
+<br>
+
+<div class="container" style="display:flex;">
+<div class="fixed" style="width:300px;">
+<div class="student_tests">
+
+
+      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
+      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Constitution</h5></span>
+      		</div>
+   		<div class="expanded_content" style="margin-left: 100px"><p>
+            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'constitution'}}>-</button>
   <span>{{ character.constitution }}</span>
-  <button {{action 'increaseStat' 'constitution'}}>more</button>
-</div>
-<br>
+  <button type="button" class="btn btn-success" {{action 'increaseStat' 'constitution'}}>+</button>
+</p></div>
 
-<div>
-  Strength:
-</div>
-<div>
-  <button {{action 'decreaseStat' 'strength'}}>less</button>
+
+      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
+      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Strength</h5></span>
+      		</div>
+   		<div class="expanded_content" style="margin-left: 100px"><p>
+            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'strength'}}>-</button>
   <span>{{ character.strength }}</span>
-  <button {{action 'increaseStat' 'strength'}}>more</button>
-</div>
-<br>
+  <button type="button" class="btn btn-success" {{action 'increaseStat' 'strength'}}>+</button>
+</p></div>
 
-<div>
-  Intelligence:
-</div>
-<div>
-  <button {{action 'decreaseStat' 'intelligence'}}>less</button>
+
+      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
+      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Intelligence</h5></span>
+      		</div>
+   		<div class="expanded_content" style="margin-left: 100px"><p>
+            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'intelligence'}}>-</button>
   <span>{{ character.intelligence }}</span>
-  <button {{action 'increaseStat' 'intelligence'}}>more</button>
-</div>
-<br>
+  <button type="button" class="btn btn-success" {{action 'increaseStat' 'intelligence'}}>+</button>
+</p></div>
 
-<div>
-  Wisdom:
-</div>
-<div>
-  <button {{action 'decreaseStat' 'wisdom'}}>less</button>
+
+      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
+      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Wisdom</h5></span>
+      		</div>
+   		<div class="expanded_content" style="margin-left: 100px"><p>
+            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'wisdom'}}>-</button>
   <span>{{ character.wisdom }}</span>
-  <button {{action 'increaseStat' 'wisdom'}}>more</button>
-</div>
-<br>
+  <button type="button" class="btn btn-success" {{action 'increaseStat' 'wisdom'}}>+</button>
+</p></div>
 
-<div>
-  Dexterity:
-</div>
-<div>
-  <button {{action 'decreaseStat' 'dexterity'}}>less</button>
+
+      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
+      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Dexterity</h5></span>
+      		</div>
+   		<div class="expanded_content" style="margin-left: 100px"><p>
+            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'dexterity'}}>-</button>
   <span>{{ character.dexterity }}</span>
-  <button {{action 'increaseStat' 'dexterity'}}>more</button>
-</div>
-<br>
+  <button type="button" class="btn btn-success" {{action 'increaseStat' 'dexterity'}}>+</button>
+</p></div>
 
-<div>
-  Charisma:
-</div>
-<div>
-  <button {{action 'decreaseStat' 'charisma'}}>less</button>
+
+      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
+      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Charisma</h5></span>
+      		</div>
+   		<div class="expanded_content" style="margin-left: 100px"><p>
+            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'charisma'}}>-</button>
   <span>{{ character.charisma }}</span>
-  <button {{action 'increaseStat' 'charisma'}}>more</button>
+  <button type="button" class="btn btn-success" {{action 'increaseStat' 'charisma'}}>+</button>
+</p></div>
+
 </div>
-<br>
+</div>
 
 
-<button {{action 'increaseStat' 'level' }}>Level Up!</button>
+<div>
+Items:
+</div>
+<div>
+{{#if hasItems}}
+<table class="table table-striped">
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td width= "150px">Name:</td>
+<td width= "100px">Weight:</td>
+</tr>
+{{#each character.items as |item|}}
+<tr>
+<td>
+{{ item.name }}
+</td>
+<td>
+{{item.weight}}
+</td>
+<td><button type="button" class="btn btn-danger" {{action 'removeItem' item}}>Drop</button></td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+{{/each}}
+</table>
+
+{{else}}
+<br>RUN AWAY!! no items...<br>
+{{/if}}
+
+<button type="button" class="btn btn-success" style="margin-left: 245px;"{{action 'addItem'}}>pick up</button>
+</div></div><br>
+
