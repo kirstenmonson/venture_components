@@ -15,16 +15,41 @@ jQuery(this).next(".expanded_content").slideToggle(500);
   <li role="presentation" class="active"><a href='character'>Character</a></li>
 </ul>
 
-<div class="container" style="display:flex;">
+
+
+<div class="container" style="display:flex; border-style:dotted;">
 <div class="fixed" style="width:300px;">
 <h4>Name: {{ character.name }}<br>
 Class: {{ character.charClass}}</h4>
 <br>
-<h5>Max Health: {{ character.maxHealth }}<br>
-Max Mana: {{ character.maxMana }}</h5><br><br>
-<button class="btn btn-default" {{action 'increaseStat' 'level' }}>Level Up!</button>
+<h5>Max Health:</h5>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+            <span>HP: {{ character.maxHealth}} / {{ character.maxHealth}}</span>
+          </div>
+        </div>
+
+
+<h5>Max Mana: </h5>
+<div class="progress">
+          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+            <span>MP: {{ character.maxMana}} / {{ character.maxMana}}</span>
+          </div>
+        </div>
+
+<h5>Burden:</h5>
+        <div class="progress">
+          <div class="progress-bar progress-bar-{{if character.hampered 'warning' }}" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: {{ character.burdenPercent }}%;">
+            <span>{{ character.itemWeight}} / {{ character.maxWeight}}</span>
+          </div>
+        </div>
+
+        <br>
+<button class="btn btn-default" {{action 'increaseStat' 'level' }} style="margin-left: 100px;">Level Up!</button><br>&nbsp;
 </div>
-<div class="flex-item" style="flex-grow:1;">
+
+
+<div class="flex-item" style="flex-grow:1; width: 500px;">
 <img src={{character.charPic}} class="img-responsive" alt="Responsive image" width="25%">
 </div>
 {{#if character.hampered }}
@@ -40,13 +65,13 @@ Max Mana: {{ character.maxMana }}</h5><br><br>
 <div class="student_tests">
 
 
-      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
+      		<div class="test_preview_container" style="cursor: pointer;"><span class="click_to_expand">
       			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Constitution</h5></span>
       		</div>
    		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'constitution'}}>-</button>
+            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'constitution'}}>-</button>
   <span>{{ character.constitution }}</span>
-  <button type="button" class="btn btn-success" {{action 'increaseStat' 'constitution'}}>+</button>
+  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'constitution'}}>+</button>
 </p></div>
 
 
@@ -54,9 +79,9 @@ Max Mana: {{ character.maxMana }}</h5><br><br>
       			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Strength</h5></span>
       		</div>
    		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'strength'}}>-</button>
+            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'strength'}}>-</button>
   <span>{{ character.strength }}</span>
-  <button type="button" class="btn btn-success" {{action 'increaseStat' 'strength'}}>+</button>
+  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'strength'}}>+</button>
 </p></div>
 
 
@@ -64,9 +89,9 @@ Max Mana: {{ character.maxMana }}</h5><br><br>
       			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Intelligence</h5></span>
       		</div>
    		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'intelligence'}}>-</button>
+            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'intelligence'}}>-</button>
   <span>{{ character.intelligence }}</span>
-  <button type="button" class="btn btn-success" {{action 'increaseStat' 'intelligence'}}>+</button>
+  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'intelligence'}}>+</button>
 </p></div>
 
 
@@ -74,9 +99,9 @@ Max Mana: {{ character.maxMana }}</h5><br><br>
       			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Wisdom</h5></span>
       		</div>
    		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'wisdom'}}>-</button>
+            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'wisdom'}}>-</button>
   <span>{{ character.wisdom }}</span>
-  <button type="button" class="btn btn-success" {{action 'increaseStat' 'wisdom'}}>+</button>
+  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'wisdom'}}>+</button>
 </p></div>
 
 
@@ -84,9 +109,9 @@ Max Mana: {{ character.maxMana }}</h5><br><br>
       			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Dexterity</h5></span>
       		</div>
    		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'dexterity'}}>-</button>
+            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'dexterity'}}>-</button>
   <span>{{ character.dexterity }}</span>
-  <button type="button" class="btn btn-success" {{action 'increaseStat' 'dexterity'}}>+</button>
+  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'dexterity'}}>+</button>
 </p></div>
 
 
@@ -94,9 +119,9 @@ Max Mana: {{ character.maxMana }}</h5><br><br>
       			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Charisma</h5></span>
       		</div>
    		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger"{{action 'decreaseStat' 'charisma'}}>-</button>
+            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'charisma'}}>-</button>
   <span>{{ character.charisma }}</span>
-  <button type="button" class="btn btn-success" {{action 'increaseStat' 'charisma'}}>+</button>
+  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'charisma'}}>+</button>
 </p></div>
 
 </div>
@@ -113,6 +138,7 @@ Items:
 <tr>
 <td width= "150px">Name:</td>
 <td width= "100px">Weight:</td>
+<td width= "100px">Bonus?</td>
 </tr>
 {{#each character.items as |item|}}
 <tr>
@@ -122,6 +148,11 @@ Items:
 <td>
 {{item.weight}}
 </td>
+<td>
+{{#each item.bonusStrings as |b|}}
+                    <span class="label label-success">{{b}}</span>
+                  {{/each}}
+                  </td>
 <td><button type="button" class="btn btn-danger" {{action 'removeItem' item}}>Drop</button></td>
 </tr>
 <tr><td>&nbsp;</td></tr>

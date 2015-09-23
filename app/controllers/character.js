@@ -33,5 +33,22 @@ export default Ember.Controller.extend({
       return[sel];
     },
 
+
+  hasItems: Ember.computed.notEmpty('character.items'),
+
+
+
+  burdenPercent: Ember.computed('character.itemWeight', 'character.maxWeight', function() {
+    return Math.min(this.get('character.itemWeight') / this.get('character.maxWeight') * 100, 100);
+  }),
+    
+    
+  itemConstitutionBonuses: Ember.computed.mapBy('items','bonuses.constitution'),
+  constitutionBonus: Ember.computed.sum('itemConstitutionBonuses'),
+  effectiveConstitution: Ember.computed('constitutionBonus','constitution', function() {
+    return this.get('constitution') + this.get('constitutionBonus');
+  })
+
+
   }
 });

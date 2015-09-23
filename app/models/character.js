@@ -7,7 +7,7 @@ export default Ember.Object.extend({
   level: 1,
   intelligence: 17,
   constitution: 17,
-  strength: 20,
+  strength: 4,
   wisdom: 21,
 dexterity: 17,
 charisma: 17,
@@ -16,6 +16,7 @@ charisma: 17,
   items: Ember.computed(function(){
     return [Item.createRandom()];
   }),
+
 
 
   maxHealth: Ember.computed('level', 'constitution', function() {
@@ -27,6 +28,7 @@ charisma: 17,
   }),
 
 itemWeights: Ember.computed.mapBy('items','weight'),
+
 
   itemWeight: Ember.computed.sum('itemWeights'),
 
@@ -55,5 +57,8 @@ itemWeights: Ember.computed.mapBy('items','weight'),
   }),
 
 
+  burdenPercent: Ember.computed('itemWeight', 'maxWeight', function() {
+    return Math.min(this.get('itemWeight') / this.get('maxWeight') * 100, 100);
+  }),
 
 });

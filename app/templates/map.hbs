@@ -13,11 +13,11 @@ Height: {{input value=mapHeight size="3"}}
 </div>
 <br>
 
-<table style="border: 1px solid gray; margin:auto;">
+<table width="400px" style="border: 1px solid gray; margin:auto;">
   {{#each map.rows as |row|}}
     <tr>
       {{#each row.cells as |cell|}}
-        <td style="color: green;">{{cell.text}}</td>
+        <td style="color: green; text-align:center;"><img src={{cell.text}} width="15%" ></td>
       {{/each}}
     </tr>
   {{/each}}

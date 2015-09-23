@@ -7,16 +7,21 @@ var Item = Ember.Object.extend({
   bonuses: {
     constitution: 0,
     strength: 0
-  }
+  },
+  bonusStrings: Ember.computed('bonuses.constitution', function() {
+    return [
+      this.get('bonuses.constitution')
+    ];
+  })
 
 });
 
 Item.reopenClass({
   createRandom: function(){
     return Item.create({
-      name: "magic sward of life",
+      name: "magic sword of life",
       weight:10,
-      bonuses:{constituion: 3}});
+      bonuses:{constitution: 3}});
   }
 });
 

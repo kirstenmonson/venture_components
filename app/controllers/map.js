@@ -8,12 +8,12 @@ var MapRow = Ember.Object.extend({
   cells: []
 });
 var MapCell = Ember.Object.extend({
-  text: "."
+  text: 'http://images.clipartpanda.com/tree-clipart-tree_tiny_green_shaded.png'
 });
 
 export default Ember.Controller.extend({
-  mapWidth: 38,
-  mapHeight: 14,
+  mapWidth: 6,
+  mapHeight: 19,
 
   map: Ember.computed('mapWidth', 'mapHeight', function() {
    var w = this.get('mapWidth');
