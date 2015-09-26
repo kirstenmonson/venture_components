@@ -1,10 +1,12 @@
 import Ember from 'ember';
+import DS from 'ember-data';
+
 import Item from './item';
 const BASE_HP = 40;
 const BASE_MM = 30;
 
-export default Ember.Object.extend({
-  level: 1,
+export default DS.Model.extend({
+  level: DS.attr('number', {defaultValue: 1}),
   intelligence: 17,
   constitution: 17,
   strength: 4,
