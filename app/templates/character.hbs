@@ -37,6 +37,9 @@ jQuery(this).next(".expanded_content").slideToggle(500);
             Class: {{character.charClass}}
             </h4>
           </div>
+
+          <br><br><button type="button" class="btn btn-success btn-sm" {{action 'addChar'}}>Add</button>
+          <button type="button" class="btn btn-danger btn-sm  pull-right" {{action 'deleteChar'}}>Delete</button>
 </div>
 
 <div class="flex-item" style="flex-grow:1; width: 500px;">
