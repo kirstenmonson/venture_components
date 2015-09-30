@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   character: Ember.computed.alias('model'),
+  //character: Ember.computed.alias('character', 'characters.firstObject'),
   hasItems:Ember.computed.notEmpty('character.items'),
 
 
