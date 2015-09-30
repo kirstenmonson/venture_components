@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Item from '../models/item';
 
 export default Ember.Controller.extend({
   character: Ember.computed.alias('model'),
@@ -24,7 +23,12 @@ export default Ember.Controller.extend({
     },
 
     addItem: function() {
-      this.get('character.items').pushObject(Item.createRandom());
+      var item = this.store.createRecord('item', {
+        name:'Sword of Life',
+        weight: 4,
+        constitutionBonus:3
+      });
+      this.get('character.items').pushObject(item);
     },
 
     changeAttr: function() {
@@ -41,8 +45,8 @@ export default Ember.Controller.extend({
   burdenPercent: Ember.computed('character.itemWeight', 'character.maxWeight', function() {
     return Math.min(this.get('character.itemWeight') / this.get('character.maxWeight') * 100, 100);
   }),
-    
-    
+
+
   itemConstitutionBonuses: Ember.computed.mapBy('items','bonuses.constitution'),
   constitutionBonus: Ember.computed.sum('itemConstitutionBonuses'),
   effectiveConstitution: Ember.computed('constitutionBonus','constitution', function() {

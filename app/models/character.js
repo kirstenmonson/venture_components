@@ -15,9 +15,7 @@ dexterity: 17,
 charisma: 17,
   numb: Math.floor(Math.random()*5),
 
-  items: Ember.computed(function(){
-    return [Item.createRandom()];
-  }),
+  items: DS.hasMany('items'),
 
 
 
@@ -62,5 +60,11 @@ itemWeights: Ember.computed.mapBy('items','weight'),
   burdenPercent: Ember.computed('itemWeight', 'maxWeight', function() {
     return Math.min(this.get('itemWeight') / this.get('maxWeight') * 100, 100);
   }),
+  
+  itemConstitutionBonuses: Ember.computed.mapBy('items','constitutionBonus'),
+  constitutionBonus: Ember.computed.sum('itemConstitutionBonuses'),
+  effectiveConstitution: Ember.computed('constitutionBonus','constitution', function() {
+    return this.get('constitution') + this.get('constitutionBonus');
+  })
 
 });
