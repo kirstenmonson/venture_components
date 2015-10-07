@@ -16,27 +16,16 @@ jQuery(this).next(".expanded_content").slideToggle(500);
 </ul>
 <div class="container" style="display:flex;">
 <div class="fixed" style="width:300px;">
-          <div style="border-bottom: 1px solid">
-            <h4>Here's your saved characters</h4>
-            </div>
-          <div style="border-bottom: 1px dotted">
-          <h4>
-            Name: {{character.name}}<br>
-            Class: {{character.charClass}}
-            </h4>
-          </div>
-          <div style="border-bottom: 1px dotted">
-          <h4>
-            Name: {{character.name}}<br>
-            Class: {{character.charClass}}
-            </h4>
-          </div>
-          <div style="border-bottom: 1px dotted">
-          <h4>
-            Name: {{character.name}}<br>
-            Class: {{character.charClass}}
-            </h4>
-          </div>
+ <div class="row">
+ <div class="col-sm-12">
+ <ul>
+ {{#each characters as |char|}}
+ <li class="btn btn-default" {{action 'changeCharacter' char }}>{{char.name}} {{char.level}}</li>
+ {{/each}}
+ <li class="btn btn-default" {{action 'addChar'}}>New</li>
+ </ul>
+ </div>
+ </div>
 
           <br><br><button type="button" class="btn btn-success btn-sm" {{action 'addChar'}}>Add</button>
           <button type="button" class="btn btn-danger btn-sm  pull-right" {{action 'deleteChar'}}>Delete</button>
@@ -83,7 +72,10 @@ Class: {{ character.charClass}}</h4>
 <img src="http://www.waywardtees.com/images/cpgal/01/trdim.jpg" class="img-responsive" alt="Responsive image" width="75%">
 </div>
 {{/if}}
-</div></div></div>
+
+</div>
+<span class="btn btn-success" {{action 'saveCharacter'}}>Save</span>
+<span class="btn btn-danger" {{action 'removeCharacter'}}>Remove</span></div></div>
 <br>
 
 <div class="container" style="display:flex;">

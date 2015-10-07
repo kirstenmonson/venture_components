@@ -1,16 +1,38 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  character: Ember.computed.alias('model'),
+  characters: Ember.computed.alias('model'),
+  character: Ember.computed.alias('characters.firstObject'),
   //character: Ember.computed.alias('character', 'characters.firstObject'),
   hasItems:Ember.computed.notEmpty('character.items'),
 
 
   _modifyStat: function(stat, amount){
-    this.set('model.'+stat, this.get('model.'+stat)+amount);
+    this.set('character.'+stat, this.get('character.'+stat)+amount);
   },
 
   actions: {
+    changeCharacter: function(char) {
+      this.set('character', char);
+    },
+
+    addChar: function(){
+      var char = this.store.createRecord('character');
+      char.save();
+      this.set('character', char);
+    },
+
+    deleteChar: function(){
+      this.get('character').deleteRecord();
+      this.get('character').save().then(function() {
+      this.set('character', this.get('characters.firstObject'));
+      });
+    },
+
+    saveCharacter: function() {
+      this.get('character').save();
+    },
+
     increaseStat: function(stat) {
       this._modifyStat(stat, 1);
     },
