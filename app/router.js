@@ -9,6 +9,11 @@ Router.map(function() {
   this.route('map');
   this.route('character');
   this.route('home');
+  this.route('login');
+  this.route('authenticated');
+  this.route('authenticated', function() {
+    this.route('secrets');
+  });
 });
 
 export default Router;

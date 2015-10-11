@@ -1,0 +1,15 @@
+<h3>Here's where you can login!</h3>
+
+{{input
+  type="text"
+  id="identification"
+  placeholder="Username!"
+  value=identification}}
+
+  {{input
+  type="text"
+  id="password"
+  placeholder="Password!"
+  value=password
+  action="login"}}
+ <button type="button" class="btn btn-success btn-sm" {{action "login" username password}} >Sign In!</button>
