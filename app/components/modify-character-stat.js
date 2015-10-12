@@ -2,18 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-    _modifyStat: function(title, amount){
-    this.set('character.'+title, this.get('character.'+title)+amount);
+    _modifyStat: function(stat, amount){
+    this.set('character.'+stat, this.get('character.'+stat)+amount);
   },
+
 
   actions: {
 
-  increaseStat: function(title) {
-      this._modifyStat(title, 1);
+  increaseStat: function(stat) {
+      this._modifyStat(stat, 1);
     },
 
-    decreaseStat: function(title) {
-      this._modifyStat(title, -1);
+    decreaseStat: function(stat) {
+      this._modifyStat(stat, -1);
     },
   }
 });

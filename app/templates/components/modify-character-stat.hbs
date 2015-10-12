@@ -1,10 +1,10 @@
 
 
 <div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
-      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;{{title}}</h5></span>
+      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;{{stat}}</h5></span>
       		</div>
    		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' title}}>-</button>
+            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' stat}}>-</button>
   <span>{{ character.wisdom }}</span>
-  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' title}}>+</button>
+  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' stat}}>+</button>
 </p></div>
