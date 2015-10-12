@@ -8,6 +8,7 @@ jQuery(this).next(".expanded_content").slideToggle(500);
 });
 </script>
 
+
 <br>
 <ul class="nav nav-tabs">
   <li role="presentation"><a href='home'>Home</a></li>
@@ -81,66 +82,25 @@ Class: {{ character.charClass}}</h4>
 <div class="container" style="display:flex;">
 <div class="fixed" style="width:300px;">
 <div class="student_tests">
+{{modify-character-stat title="Constitution" chara = character}}
+{{modify-character-stat title="Strength"}}
+{{modify-character-stat title="Intelligence"}}
+{{modify-character-stat title="Wisdom"}}
+{{modify-character-stat title="Dexterity"}}
+{{modify-character-stat title="Charisma"}}
 
 
-      		<div class="test_preview_container" style="cursor: pointer;"><span class="click_to_expand">
-      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Constitution</h5></span>
-      		</div>
-   		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'constitution'}}>-</button>
-  <span>{{ character.constitution }}</span>
-  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'constitution'}}>+</button>
-</p></div>
 
 
-      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
-      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Strength</h5></span>
-      		</div>
-   		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'strength'}}>-</button>
-  <span>{{ character.strength }}</span>
-  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'strength'}}>+</button>
-</p></div>
 
 
-      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
-      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Intelligence</h5></span>
-      		</div>
-   		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'intelligence'}}>-</button>
-  <span>{{ character.intelligence }}</span>
-  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'intelligence'}}>+</button>
-</p></div>
 
 
-      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
-      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Wisdom</h5></span>
-      		</div>
-   		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'wisdom'}}>-</button>
-  <span>{{ character.wisdom }}</span>
-  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'wisdom'}}>+</button>
-</p></div>
 
 
-      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
-      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Dexterity</h5></span>
-      		</div>
-   		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'dexterity'}}>-</button>
-  <span>{{ character.dexterity }}</span>
-  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'dexterity'}}>+</button>
-</p></div>
 
 
-      		<div  class="test_preview_container" style="cursor: pointer"><span class="click_to_expand">
-      			<h5>&nbsp;&nbsp;&nbsp;&nbsp;Charisma</h5></span>
-      		</div>
-   		<div class="expanded_content" style="margin-left: 100px"><p>
-            <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' 'charisma'}}>-</button>
-  <span>{{ character.charisma }}</span>
-  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' 'charisma'}}>+</button>
-</p></div>
+
 
 </div>
 </div>
