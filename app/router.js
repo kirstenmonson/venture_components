@@ -10,7 +10,6 @@ Router.map(function() {
   this.route('character');
   this.route('home');
   this.route('login');
-  this.route('authenticated');
   this.route('authenticated', function() {
     this.route('secrets');
   });

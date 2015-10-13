@@ -3,6 +3,12 @@
   <li role="presentation" class="active"><a href='home'>Home</a></li>
   <li role="presentation"><a href='map'>Map</a></li>
   <li role="presentation"><a href='character'>Character</a></li>
+  <li role="presentation">{{#link-to 'authenticated.secrets'}}Secrets{{/link-to}}</li>
+  {{#if session.isAuthenticated}}
+        <li><a href="!#" {{action 'invalidateSession'}}>Logout</a></li>
+  {{else}}
+        <li><a href='login'>Login</a></li>
+      {{/if}}
 </ul>
 
 <h4>&nbsp;&nbsp;&nbsp;&nbsp;ven·ture- noun: a risky or daring journey or undertaking.</h4>

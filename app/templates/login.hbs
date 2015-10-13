@@ -1,15 +1,27 @@
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href='home'>Home</a></li>
+  <li role="presentation"><a href='map'>Map</a></li>
+  <li role="presentation"><a href='character'>Character</a></li>
+
+  <li role="presentation">{{#link-to 'authenticated.secrets'}}Secrets{{/link-to}}</li>
+  {{#if session.isAuthenticated}}
+        <li><a href="!#" {{action 'invalidateSession'}}>Logout</a></li>
+  {{else}}
+        <li role="presentation" class="active"><a href='login'>Login</a></li>
+      {{/if}}
+</ul>
+
 <h3>Here's where you can login!</h3>
+<form {{action "authenticate" on="submit"}}>
+<div>
+<label for="identification">E-mail</label><br />
+{{input value=identification placeholder="E-mail" type="text" name="email"}}
+  </div>
 
-{{input
-  type="text"
-  id="identification"
-  placeholder="Username!"
-  value=identification}}
+<div>
+<label for="password">Password</label><br />
+{{input value=password placeholder="Password" type="password" name="password"}}
 
-  {{input
-  type="text"
-  id="password"
-  placeholder="Password!"
-  value=password
-  action="login"}}
- <button type="button" class="btn btn-success btn-sm" {{action "login" username password}} >Sign In!</button>
+ <button type="button" class="btn btn-success btn-sm" {{action 'authenticate' username password}} >Sign In!</button>
+ </div>
+ </form>

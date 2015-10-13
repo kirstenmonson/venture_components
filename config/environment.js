@@ -43,5 +43,15 @@ module.exports = function(environment) {
 
   }
 
+  ENV['simple-auth'] = {
+    authorizer: 'simple-auth-authorizer:devise',
+    routeAfterAuthentication: 'home'
+  }
+  ENV['simple-auth-devise']= {
+    //serverTokenEndpoint: '/users/sign_in',
+    tokenAttributeName: 'token',
+    identificationAttributeName: 'email'
+  };
+
   return ENV;
 };
