@@ -1,8 +1,8 @@
 <br>
 <ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href='home'>Home</a></li>
-  <li role="presentation"><a href='map'>Map</a></li>
-  <li role="presentation"><a href='character'>Character</a></li>
+  <li role="presentation">{{#link-to 'authenticated.map'}}Map{{/link-to}}</li>
+  <li role="presentation">{{#link-to 'authenticated.character'}}Character{{/link-to}}</li>
   <li role="presentation">{{#link-to 'authenticated.secrets'}}Secrets{{/link-to}}</li>
   {{#if session.isAuthenticated}}
         <li><a href="!#" {{action 'invalidateSession'}}>Logout</a></li>

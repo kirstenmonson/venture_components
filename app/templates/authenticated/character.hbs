@@ -1,0 +1,151 @@
+<script type="text/javascript">
+jQuery(document).ready(function() {
+jQuery(".expanded_content").hide();
+jQuery(".test_preview_container").click(function()
+{
+jQuery(this).next(".expanded_content").slideToggle(500);
+});
+});
+</script>
+
+
+<br>
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href='home'>Home</a></li>
+  <li role="presentation">{{#link-to 'authenticated.map'}}Map{{/link-to}}</li>
+  <li role="presentation" class="active">{{#link-to 'authenticated.character'}}Character{{/link-to}}</li>
+  <li role="presentation">{{#link-to 'authenticated.secrets'}}Secrets{{/link-to}}</li>
+  {{#if session.isAuthenticated}}
+        <li><a href="!#" {{action 'invalidateSession'}}>Logout</a></li>
+  {{else}}
+        <li><a href='login'>Login</a></li>
+      {{/if}}
+</ul>
+<div class="container" style="display:flex;">
+<div class="fixed" style="width:300px;">
+ <div class="row">
+ <div class="col-sm-12">
+ <ul>
+ {{#each characters as |char|}}
+ <li class="btn btn-default" {{action 'changeCharacter' char }}>{{char.name}} {{char.level}}</li>
+ {{/each}}
+ <li class="btn btn-default" {{action 'addChar'}}>New</li>
+ </ul>
+ </div>
+ </div>
+
+          <br><br><button type="button" class="btn btn-success btn-sm" {{action 'addChar'}}>Add</button>
+          <button type="button" class="btn btn-danger btn-sm  pull-right" {{action 'deleteChar'}}>Delete</button>
+</div>
+
+<div class="flex-item" style="flex-grow:1; width: 500px;">
+<div class="container" style="display:flex; border-style:dotted;">
+<div class="fixed" style="width:300px;">
+<h4>Name: {{ character.name }}<br>
+Class: {{ character.charClass}}</h4>
+<br>
+<h5>Max Health:</h5>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+            <span>HP: {{ character.maxHealth}} / {{ character.maxHealth}}</span>
+          </div>
+        </div>
+
+
+<h5>Max Mana: </h5>
+<div class="progress">
+          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+            <span>MP: {{ character.maxMana}} / {{ character.maxMana}}</span>
+          </div>
+        </div>
+
+<h5>Burden:</h5>
+        <div class="progress">
+          <div class="progress-bar progress-bar-{{if character.hampered 'warning' }}" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: {{ character.burdenPercent }}%;">
+            <span>{{ character.itemWeight}} / {{ character.maxWeight}}</span>
+          </div>
+        </div>
+
+        <br>
+<button class="btn btn-default" {{action 'increaseStat' 'level' }} style="margin-left: 100px;">Level Up!</button><br>&nbsp;
+</div>
+
+
+<div class="flex-item" style="flex-grow:1; width: 500px;">
+<img src={{character.charPic}} class="img-responsive" alt="Responsive image" width="25%">
+</div>
+{{#if character.hampered }}
+<div class="flex-item" style="flex-grow:2;">
+<img src="http://www.waywardtees.com/images/cpgal/01/trdim.jpg" class="img-responsive" alt="Responsive image" width="75%">
+</div>
+{{/if}}
+
+</div>
+<span class="btn btn-success" {{action 'saveCharacter'}}>Save</span>
+<span class="btn btn-danger" {{action 'removeCharacter'}}>Remove</span></div></div>
+<br>
+
+<div class="container" style="display:flex;">
+<div class="fixed" style="width:300px;">
+<div class="student_tests">
+{{modify-character-stat stat="constitution" character = character title=character.constitution}}
+{{modify-character-stat stat="strength" character = character title=character.strength}}
+{{modify-character-stat stat="intelligence" character = character title=character.intelligence}}
+{{modify-character-stat stat="wisdom" character = character title=character.wisdom}}
+{{modify-character-stat stat="dexterity" character = character title=character.dexterity}}
+{{modify-character-stat stat="charisma" character = character title=character.charisma}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+<div>
+Items:
+</div>
+<div>
+{{#if hasItems}}
+<table class="table table-striped">
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td width= "150px">Name:</td>
+<td width= "100px">Weight:</td>
+<td width= "100px">Bonus?</td>
+</tr>
+{{#each character.items as |item|}}
+<tr>
+<td>
+{{ item.name }}
+</td>
+<td>
+{{item.weight}}
+</td>
+<td>
+{{#each item.bonusStrings as |b|}}
+                    <span class="label label-success">{{b}}</span>
+                  {{/each}}
+                  </td>
+<td><button type="button" class="btn btn-danger" {{action 'removeItem' item}}>Drop</button></td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+{{/each}}
+</table>
+
+{{else}}
+<br>RUN AWAY!! no items...<br>
+{{/if}}
+
+<button type="button" class="btn btn-success" style="margin-left: 245px;"{{action 'addItem'}}>pick up</button>
+</div></div><br>
