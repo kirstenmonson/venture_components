@@ -42,7 +42,19 @@ jQuery(this).next(".expanded_content").slideToggle(500);
 <div class="container" style="display:flex; border-style:dotted;">
 <div class="fixed" style="width:300px;">
 <h4>Name: {{ character.name }}<br>
-{{input type="text" value=character.name}}<br>
+<div class={{if errors.character.name 'has-error'}}>
+{{input type="text" value=character.name class="form-control"}}<br>
+{{#unless isValid}}
+{{#each errors.character.name as |err|}}
+<span class="label label-danger">
+{{err}}
+</span>
+{{/each}}
+<br><br>
+{{/unless}}
+</div>
+
+
 Class: {{ character.characterClass}}</h4>
 <br>
 <h5>Max Health:</h5>
@@ -67,6 +79,8 @@ Class: {{ character.characterClass}}</h4>
           </div>
         </div>
 
+
+
         <br>
 <button class="btn btn-default" {{action 'increaseStat' 'level' }} style="margin-left: 100px;">Level Up!</button><br>&nbsp;
 </div>
@@ -82,7 +96,7 @@ Class: {{ character.characterClass}}</h4>
 {{/if}}
 
 </div>
-<span class="btn btn-success" {{action 'saveCharacter'}}>Save</span>
+<span class="btn btn-success" disabled={{unless isValid 'disable'}} {{action 'saveCharacter'}}>Save</span>
 <span class="btn btn-danger" {{action 'removeCharacter'}}>Remove</span></div></div>
 <br>
 

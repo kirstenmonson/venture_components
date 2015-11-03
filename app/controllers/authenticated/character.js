@@ -1,7 +1,13 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
+  validations: {
+      'character.name' : {
+        presence: true,
+        length: {minimum: 3}
+      }
+  },
   characters: Ember.computed.alias('model'),
   character: Ember.computed.alias('characters.firstObject'),
   //character: Ember.computed.alias('character', 'characters.firstObject'),
@@ -31,7 +37,9 @@ export default Ember.Controller.extend({
     },
 
     saveCharacter: function() {
+      if(this.get('isValid')) {
       this.get('character').save();
+      }
     },
 
     increaseStat: function(stat) {
