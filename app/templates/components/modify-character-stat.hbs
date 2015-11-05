@@ -4,5 +4,5 @@
    		<div class="expanded_content" style="margin-left: 100px"><p>
             <button type="button" class="btn btn-danger btn-sm"{{action 'decreaseStat' stat}}>-</button>
   <span>{{ title }}</span>
-  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' stat}}>+</button>
+  <button type="button" class="btn btn-success btn-sm" {{action 'increaseStat' stat}} disabled = {{unless hasPointsLeft 'disabled'}} >+</button>
 </p></div>

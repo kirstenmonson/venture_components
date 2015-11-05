@@ -1,3 +1,31 @@
 <h3>Level Up!</h3>
 
-<span class="btn btn-default" {{action 'closeModal'}}>Close</span>
+<!-- Modal -->
+<div id="myModal" class="modal fade in" style="display: block" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"{{action 'closeModal'}}>&times;</button>
+        <h4 class="modal-title">Level: {{character.level}}, Points Left: {{model.pointsLeft}}</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+{{modify-character-stat stat="constitution" character = character title=character.constitution pointsLeft=model.pointsLeft}}
+{{modify-character-stat stat="strength" character = character title=character.strength pointsLeft=model.pointsLeft}}
+{{modify-character-stat stat="intelligence" character = character title=character.intelligence pointsLeft=model.pointsLeft}}
+{{modify-character-stat stat="wisdom" character = character title=character.wisdom pointsLeft=model.pointsLeft}}
+{{modify-character-stat stat="dexterity" character = character title=character.dexterity pointsLeft=model.pointsLeft}}
+{{modify-character-stat stat="charisma" character = character title=character.charisma pointsLeft=model.pointsLeft}}
+</div>
+      </div>
+      <div class="modal-footer">
+        {{#if hasPointsLeft}}
+        <button type="button" class="btn btn-default" data-dismiss="modal" disabled="disabled">Done</button>
+        {{else}}
+        <button type="button" class="btn btn-default" data-dismiss="modal"{{action 'closeModal'}}>Done</button>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
