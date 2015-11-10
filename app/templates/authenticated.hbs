@@ -1,1 +1,14 @@
+<br>
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href='home'>Home</a></li>
+  <li role="presentation">{{#link-to 'authenticated.map'}}Map{{/link-to}}</li>
+  <li role="presentation">{{#link-to 'authenticated.character'}}Characters{{/link-to}}</li>
+  <li role="presentation">{{#link-to 'authenticated.secrets'}}Secrets{{/link-to}}</li>
+  {{#if session.isAuthenticated}}
+        <li><a href="!#" {{action 'invalidateSession'}}>Logout</a></li>
+  {{else}}
+        <li><a href='login'>Login</a></li>
+      {{/if}}
+</ul>
+<br>
 {{outlet}}

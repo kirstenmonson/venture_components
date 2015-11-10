@@ -11,17 +11,22 @@
       {{/if}}
 </ul>
 
-<h3>Here's where you can login!</h3>
+
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;ven·ture- noun: a risky or daring journey or undertaking.</h4>
+<div style= "border-width:5px; border-style:groove; width:75%; margin:auto;">Welcome to the world of Venture, a brand new game brought to you by the same people who haven't brought you any games so far. Visit and expand your forest to create your path, or check out your character profile above. Be prepared to enter into battles like never before, with creatures you can't imagine yet. Join this risky and dangerous journey through the forest, collecting what you can, and see how far you can make it. Join now for free.</div>
+<br><br>
+
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;If you already have an account, login here!</h4>
 <form {{action "authenticate" on="submit"}}>
 <div>
-<label for="identification">E-mail</label><br />
-{{input value=identification placeholder="E-mail" type="text" name="email"}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="identification">E-mail</label><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{input value=identification placeholder="E-mail" type="text" name="email"}}
   </div>
 
 <div>
-<label for="password">Password</label><br />
-{{input value=password placeholder="Password" type="password" name="password"}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="password">Password</label><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{input value=password placeholder="Password" type="password" name="password"}}
 
- <button type="button" class="btn btn-success btn-sm" {{action 'authenticate' username password}} >Sign In!</button>
+<button type="button" class="btn btn-success btn-sm" {{action 'authenticate' username password}} >Sign In!</button>
  </div>
  </form>

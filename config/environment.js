@@ -45,7 +45,7 @@ module.exports = function(environment) {
 
   ENV['simple-auth'] = {
     authorizer: 'simple-auth-authorizer:devise',
-    routeAfterAuthentication: 'home'
+    routeAfterAuthentication: 'authenticated.character'
   }
   ENV['simple-auth-devise']= {
     //serverTokenEndpoint: '/users/sign_in',

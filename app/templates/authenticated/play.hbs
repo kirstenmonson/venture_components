@@ -1,0 +1,91 @@
+<div class="flex-item" style="flex-grow:1; width: 500px;">
+  <div class="container" style="display:flex; border-style:dotted;">
+    <div class="fixed" style="width:300px;">
+      <h4>Name: {{ character.name }}<br>
+        <div class={{if errors.character.name 'has-error'}}>
+          {{input type="text" value=character.name class="form-control"}}<br>
+            {{#unless isValid}}
+              {{#each errors.character.name as |err|}}
+                <span class="label label-danger">
+                  {{err}}
+                </span>
+              {{/each}}<br><br>
+             {{/unless}}
+        </div>
+       Class: {{ character.characterClass}}</h4><br>
+      <h5>Max Health:</h5>
+        <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+          <span>HP: {{ character.maxHealth}} / {{ character.maxHealth}}</span>
+         </div>
+         </div>
+       <h5>Max Mana: </h5>
+       <div class="progress">
+       <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+         <span>MP: {{ character.maxMana}} / {{ character.maxMana}}</span>
+       </div>
+       </div>
+       <h5>Burden:</h5>
+        <div class="progress">
+        <div class="progress-bar progress-bar-{{if character.hampered 'warning' }}" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: {{ character.burdenPercent }}%;">
+          <span>{{ character.itemWeight}} / {{ character.maxWeight}}</span>
+        </div>
+        </div><br>
+        <button class="btn btn-default" {{action 'levelUp' }} style="margin-left: 100px;">Level Up!</button><br>&nbsp;
+  </div>
+  <div class="fixed" style="width:500px;"></div>
+
+<div class="fixed" style="width:300px;">
+<div class="student_tests">
+{{modify-character-stat stat="constitution" character = character title=character.constitution}}
+{{modify-character-stat stat="strength" character = character title=character.strength}}
+{{modify-character-stat stat="intelligence" character = character title=character.intelligence}}
+{{modify-character-stat stat="wisdom" character = character title=character.wisdom}}
+{{modify-character-stat stat="dexterity" character = character title=character.dexterity}}
+{{modify-character-stat stat="charisma" character = character title=character.charisma}}
+</div></div></div></div>
+
+
+<p align="center">
+<span class="btn btn-success" disabled={{unless isValid 'disable'}} {{action 'saveCharacter'}}>Save</span>
+<span class="btn btn-danger" {{action 'removeCharacter'}}>Remove</span>
+</p>
+
+
+<div>
+Items:
+</div>
+<div>
+{{#if hasItems}}
+<table class="table table-striped">
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td width= "150px">Name:</td>
+<td width= "100px">Weight:</td>
+<td width= "100px">Bonus?</td>
+</tr>
+{{#each character.items as |item|}}
+<tr>
+<td>
+{{ item.name }}
+</td>
+<td>
+{{item.weight}}
+</td>
+<td>
+{{#each item.bonusStrings as |b|}}
+                    <span class="label label-success">{{b}}</span>
+                  {{/each}}
+                  </td>
+<td><button type="button" class="btn btn-danger" {{action 'removeItem' item}}>Drop</button></td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+{{/each}}
+</table>
+
+{{else}}
+<br>RUN AWAY!! no items...<br>
+{{/if}}
+
+<button type="button" class="btn btn-success" style="margin-left: 245px;"{{action 'addItem'}}>pick up</button>
+</div><br>
