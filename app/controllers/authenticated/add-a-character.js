@@ -8,9 +8,15 @@ export default Ember.Controller.extend(EmberValidations, {
         length: {minimum: 3}
       }
   },
+
   character: Ember.computed.alias('model'),
 
   actions: {
+    randomizeCharacter: function() {
+      var randomCharacter = this.get('randomCharacterFenerator').randomize();
+      this.set('character', randomCharacter);
+    },
+
     addChar: function(){
       var char = this.store.createRecord('character');
       char.save();

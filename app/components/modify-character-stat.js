@@ -18,7 +18,7 @@ export default Ember.Component.extend({
     },
 
     decreaseStat: function(stat) {
-      if(this.get('stat') > 1) {
+      if(this.get(stat) > 1) {
       this.incrementProperty('pointsLeft');
       this._modifyStat(stat, -1);
       }

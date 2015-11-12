@@ -12,9 +12,25 @@
           <br><br>
         {{/unless}}
        </div>
-      Class: {{ character.characterClass}}</h4><br>
-   </p></div>
+      Class: {{ character.characterClass}}<br><br><br>
+      <div>Stat Points To Spend: {{character.statPointsToSpend}}</div></h4><br>
+   </p>
+
+   <div style="width: 200px"></div><div class="fixed">
+      {{modify-character-stat stat="constitution" character = character title=character.constitution pointsLeft=character.statPointsToSpend}}
+      {{modify-character-stat stat="strength" character = character title=character.strength pointsLeft=character.statPointsToSpend}}
+      {{modify-character-stat stat="intelligence" character = character title=character.intelligence pointsLeft=character.statPointsToSpend}}
+   </div><div style="width: 200px"></div>
+
+  <div class="fixed" style="width: 300px">
+      {{modify-character-stat stat='wisdom' character = character title=character.wisdom pointsLeft=character.statPointsToSpend}}
+      {{modify-character-stat stat="dexterity" character = character title=character.dexterity pointsLeft=character.statPointsToSpend}}
+      {{modify-character-stat stat="charisma" character = character title=character.charisma pointsLeft=character.statPointsToSpend}}
+   </div></div>
+
 <p align="center">
   <span class="btn btn-success" disabled={{unless isValid 'disable'}} {{action 'saveCharacter'}}>Save</span>
   {{#link-to 'authenticated.character'}}<span class="btn btn-danger">Remove</span>{{/link-to}}
 </p>
+
+<div class='btn btn-danger' {{action 'randomizeCharacter'}}>Random</div>
