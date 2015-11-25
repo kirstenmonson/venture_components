@@ -34,7 +34,7 @@ export default Ember.Controller.extend(EmberValidations, {
       if(this.get('isValid')) {
       this.get('character').save().then(() => {
         this.transitionToRoute('authenticated.character');
-      })};
+      })}
     },
 
     changeAttr: function() {

@@ -8,18 +8,21 @@ var MapRow = Ember.Object.extend({
   cells: []
 });
 var MapCell = Ember.Object.extend({
-  text: 'http://images.clipartpanda.com/tree-clipart-tree_tiny_green_shaded.png'
+  text: Ember.computed('tile', function() {return ""+this.get('tile');}),
+  tile: -1
 });
 
 export default Ember.Controller.extend({
   mapWidth: 6,
   mapHeight: 19,
 
-  map: Ember.computed('mapWidth', 'mapHeight', function() {
-   var w = this.get('mapWidth');
-   var h = this.get('mapHeight');
-   return GameMap.create({rows: buildMapRows(w, h)});
-  }),
+  map: Ember.inject.service(),
+  character: Ember.computed.alias('model'),
+  //map: Ember.computed('mapWidth', 'mapHeight', function() {
+   //var w = this.get('mapWidth');
+   //var h = this.get('mapHeight');
+   //return GameMap.create({rows: buildMapRows(w, h)});
+  //}),
 
   init: function() {
     this.set('name', 'The Hopeful Forest');
