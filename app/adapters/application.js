@@ -1,4 +1,8 @@
 import DS from 'ember-data';
-		export default DS.LSAdapter.extend({
-			namespace: 'venture'
-		});
+import Ember from 'ember';
+
+export default DS.ActiveModelAdapter.extend({
+  // pathForType: function(type) {
+  //   return Ember.String.underscore(type);
+  // }
+});

@@ -1,41 +1,50 @@
-<h4>&nbsp;&nbsp;&nbsp;&nbsp;You are in "{{ name }}"</h4>
-<div class="container" style="display:flex;">
-<div class="fixed" style="width:250px;">
-<div id="char" height="50%">
-<img src="https://jamfnation.jamfsoftware.com/img/default-avatars/generic-user.png" width="65%">
-</div>
-<div id="arrows">
-&nbsp;<br><br><br>
-<div class="text-center">
-<button type="button" class="btn btn-primary btn-lg">Up &#9650;</button><br>
+<div class="row">
+  <div class="col-sm-12">
+    <h4>You are in "{{ name }}"</h4>
+  </div>
 </div>
 
-<div class="text-center">
-<button type="button" class="btn btn-primary btn-lg">&#9664; Left</button>
-<button type="button" class="btn btn-primary btn-lg">Right &#9654;</button><br>
-</div>
-
-<div class="text-center">
-<button type="button" class="btn btn-primary btn-lg">&#9660; Down</button>
-</div>
-</div>
-
-</div>
-<div class="flex-item" style="flex-grow:1; width: 500px;">
-<div style="text-align:center; margin-right:auto; margin-left:auto;">
-Width: {{input value=mapWidth size="3"}}
-Height: {{input value=mapHeight size="3"}}
-</div>
-<br>
-
-<table width="400px" style="border: 1px solid gray; margin:auto;">
-  {{#each map.rows as |row|}}
-    <tr>
-      {{#each row.cells as |cell|}}
-        <td style="color: green; text-align:center;"><img src={{cell.text}} width="15%" ></td>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="col-sm-12" style="height: 200px;">
+      <div>CHARACTER!</div>
+      <span>{{character.x}}, {{character.y}}</span>
+    </div>
+    <div class="col-sm-12">
+      Width: {{input value=mapWidth size="3"}}
+      Height: {{input value=mapHeight size="3"}}
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4"> 
+        <span class="btn btn-default" {{action 'move' 0 -1 }}>UP!</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4"> 
+        <span class="btn btn-default"{{action 'move' -1 0 }}>LEFT!</span>
+      </div>
+      <div class="col-sm-4 col-sm-offset-4"> 
+        <span class="btn btn-default" {{action 'move' 1 0 }}>RIGHT!</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4"> 
+        <span class="btn btn-default"{{action 'move' 0 1 }}>DOWN!</span>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="col-sm-9">
+    <table class='map' style="border: 1px solid gray;">
+      {{#each rows as |row|}}
+        <tr>
+          {{#each row as |cell|}}
+          <td class="tile {{ cell.tileClass }} {{if cell.hasCharacter 'h5'}}">{{cell.text}}</td>
+          {{/each}}
+        </tr>
       {{/each}}
-    </tr>
-  {{/each}}
-</table>
-</div>
+    </table>
+  </div>
+
 </div>
