@@ -1,4 +1,4 @@
-import Ember from 'ember';
+/*import Ember from 'ember';
 
 export default Ember.Route.extend({
   /*model: function() {
@@ -9,7 +9,7 @@ export default Ember.Route.extend({
       }, 3000);
     }).then(function() { return char;});*/
 
-  model: function() {
+/*  model: function() {
     let charPromise = this.store.findAll('character');
     return new Ember.RSVP.Promise(resolve => {
       return Ember.run.later(() => {
@@ -32,5 +32,12 @@ export default Ember.Route.extend({
     }, "DS: RestAdapter#ajax " + type + " to " + url); // they name their promise
   }
 
-});
+});*/
 
+import Ember from 'ember';
+
+export default Ember.Route.extend({
+  model: function() {
+    return this.store.findAll('character');
+  }
+});

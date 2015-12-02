@@ -20,13 +20,13 @@
 <form {{action "authenticate" on="submit"}}>
 <div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="identification">E-mail</label><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{input value=identification placeholder="E-mail" type="text" name="email"}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{input value=identification placeholder="E-mail" type="text" name="email" classNames="app-email"}}
   </div>
 
 <div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="password">Password</label><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{input value=password placeholder="Password" type="password" name="password"}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{input value=password placeholder="Password" type="password" name="password" classNames="app-password"}}
 
-<button type="button" class="btn btn-success btn-sm" {{action 'authenticate' username password}} >Sign In!</button>
+<button type="submit" class="btn btn-success btn-sm">Sign In!</button>
  </div>
  </form>
